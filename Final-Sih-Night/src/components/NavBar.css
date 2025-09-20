@@ -1,0 +1,44 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 2em;
+  background: transparent; /* you can set a color if needed */
+  color: #fff;
+  font-family: 'Unbounded', sans-serif; /* ✅ apply Unbounded font */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: 700; /* bold in Unbounded */
+  color: #fff;
+  font-family: 'Unbounded', sans-serif; /* ✅ enforce font */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  font-family: 'Unbounded', sans-serif; /* ✅ enforce font */
+}
+
+.nav-links li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: all 0.3s ease;
+  padding: 0.4em 0.8em;
+  border-radius: 18px;
+  font-family: 'Unbounded', sans-serif; /* ✅ enforce font */
+}
+
+.nav-links li a:hover {
+  color: #fff;
+  
+  box-shadow: 0 0 10px rgb(195, 142, 150);
+}

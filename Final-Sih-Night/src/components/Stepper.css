@@ -1,0 +1,137 @@
+.stepper-container {
+  background: rgba(6, 15, 49, 0.6); /* dark navy blue glassy */
+  color: #000;
+  padding: 2em;
+  border-radius: 20px;
+  max-width: 700px;
+  width: 90%;
+  margin: 2em auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  font-family: "Unbounded", sans-serif; /* ✅ Unbounded font */
+  transition: all 0.3s ease;
+  
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Step indicators row */
+.step-indicators {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.step-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+/* Step circles */
+.step-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  font-family: "Unbounded", sans-serif; /* ✅ applied to numbers */
+}
+
+/* Active step */
+.step-circle.active {
+  border: 3px solid rgb(195, 142, 150);
+  color: #000;
+  box-shadow: 0 0 15px rgb(195, 142, 150);
+}
+
+/* Completed step */
+.step-circle.completed {
+  background: rgb(195, 142, 150);
+  color: #000;
+  box-shadow: 0 0 12px rgb(195, 142, 150);
+}
+
+/* Lines between steps */
+.step-line {
+  flex-grow: 1;
+  height: 4px;
+  background: #ddd;
+  margin: 0 0px;
+}
+
+.step-line.filled {
+  background: rgb(225, 146, 157);
+}
+
+/* Step Content */
+.step-content input {
+  width: 100%;
+  padding: 12px;
+  margin: 1em 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #000;
+  font-size: 1rem;
+  font-family: "Unbounded", sans-serif; /* ✅ input text */
+}
+
+.step-content input:focus {
+  outline: none;
+  border-color: rgb(195, 142, 150);
+  box-shadow: 0 0 10px rgb(195, 142, 150);
+}
+
+/* Footer buttons */
+.stepper-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5em;
+}
+
+.step-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  color: #000;
+  font-family: "Unbounded", sans-serif; /* ✅ buttons too */
+}
+
+/* Back button */
+.step-btn.back {
+  background: #ddd;
+}
+
+.step-btn.back:hover:not(:disabled) {
+  background: #ccc;
+  box-shadow: 0 0 10px rgba(195, 142, 150, 0.6);
+}
+
+/* Next button */
+.step-btn.next {
+  background: rgb(195, 142, 150);
+}
+
+.step-btn.next:hover {
+  background: rgb(175, 120, 130);
+  box-shadow: 0 0 12px rgb(195, 142, 150);
+}
+
+.step-btn:disabled {
+  background: #eee;
+  color: #777;
+  cursor: not-allowed;
+}
