@@ -100,6 +100,29 @@
   font-weight: bold;
 }
 
+/* "Why this match" reasons */
+.recommendation-card .why {
+  margin-top: 0.8em;
+  padding-top: 0.6em;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+}
+
+.recommendation-card .why strong {
+  color: rgb(195, 142, 150);
+}
+
+.recommendation-card .why ul {
+  margin: 0.4em 0 0;
+  padding-left: 1.1em;
+  list-style: disc;
+}
+
+.recommendation-card .why li {
+  margin-bottom: 0.25em;
+  line-height: 1.35;
+}
+
 /* Highlight Match Score with pulsing glow */
 .match-score {
   color: #0de3e3;

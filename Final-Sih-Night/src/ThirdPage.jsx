@@ -32,7 +32,7 @@ const ThirdPage = () => {
         <div className="recommendation-grid">
           {recommendations.map((rec, index) => (
             <div
-              key={index}
+              key={rec.id ?? index}
               className="recommendation-card"
               style={{ animationDelay: `${index * 0.2}s` }} // ✅ staggered delay
             >
@@ -41,17 +41,36 @@ const ThirdPage = () => {
                 <strong>Company:</strong> {rec.CompanyName}
               </p>
               <p>
-                <strong>Location:</strong> {rec.States}
+                <strong>Location:</strong>{" "}
+                {rec.Cities && rec.Cities !== rec.States
+                  ? `${rec.Cities}, ${rec.States}`
+                  : rec.States}
               </p>
               <p>
                 <strong>Type:</strong> {rec.JobType}
               </p>
+              {rec.Stipend && (
+                <p>
+                  <strong>Stipend:</strong> {rec.Stipend}
+                  {rec.Duration ? ` · ${rec.Duration}` : ""}
+                </p>
+              )}
               <p>
                 <strong>Match Score:</strong>{" "}
                 <span className="match-score">
                   {(rec.match_score * 100).toFixed(2)}%
                 </span>
               </p>
+              {rec.reasons?.length > 0 && (
+                <div className="why">
+                  <strong>Why this match</strong>
+                  <ul>
+                    {rec.reasons.map((reason, i) => (
+                      <li key={i}>{reason}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           ))}
         </div>

@@ -1,5 +1,5 @@
-# api/main.py
-from fastapi import FastAPI, HTTPException
+# main.py
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from api import schemas, utils
 
@@ -22,38 +22,29 @@ def root():
 
 @app.get("/status", tags=["status"])
 def status():
-    """Check if model + dataset loaded."""
+    """Check that the dataset loaded and report the scoring setup."""
     try:
-        model, encoders, df = utils.load_model()
+        st = utils.load_data()
         return {
-            "model_type": type(model).__name__,
-            "num_internships": len(df)
+            "scoring": "weighted input-dependent components",
+            "weights": utils.WEIGHTS,
+            "num_internships_raw": st["n_raw"],
+            "num_internships": len(st["df"]),
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/recommend", response_model=schemas.RecommendOut, tags=["recs"])
-def recommend(candidate: schemas.CandidateIn, top_k: int = 5):
-    """
-    Main recommendation endpoint → called by frontend.
-    """
+def recommend(candidate: schemas.CandidateIn, top_k: int = Query(5, ge=1, le=50)):
+    """Main recommendation endpoint, called by the frontend."""
     try:
-        r = utils.recommend(candidate.dict(), top_k=top_k)
+        r = utils.recommend(candidate.model_dump(), top_k=top_k)
         return {
             "candidate": candidate,
             "match_probability": r["probability"],
-            "recommendations": [
-                {
-                    "id": None,
-                    "JobTitle": rec["JobTitle"],
-                    "CompanyName": rec["CompanyName"],
-                    "States": rec["States"],
-                    "JobType": rec["JobType"],
-                    "match_score": rec["match_score"],
-                }
-                for rec in r["recommendations"]
-            ],
+            "weights": r["used_components"],
+            "recommendations": r["recommendations"],
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

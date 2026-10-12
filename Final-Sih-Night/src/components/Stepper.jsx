@@ -29,11 +29,10 @@ const Stepper = ({ onComplete }) => {
     if (step < steps.length - 1) {
       setStep(step + 1);
     } else {
-      const payload = {
-        JobTitle: formData.JobTitle,
-        Mode: formData.Mode,
-        Location: formData.Location,
-      };
+      // Send every field; the API parses free-text stipend ("₹10,000/month") itself.
+      const payload = Object.fromEntries(
+        Object.entries(formData).map(([k, v]) => [k, v.trim()])
+      );
       onComplete(payload);
     }
   };
