@@ -4,11 +4,11 @@ import Threads from "./components/Threads";
 import TextOverlay from "./components/TextOverlay";
 import ButtonOverlay from "./components/ButtonOverlay";
 import SecondPage from "./SecondPage";
-import Navbar from "./components/Navbar"; // ✅ Navbar
+import Navbar from "./components/NavBar"; // ✅ Navbar
 import ThirdPage from "./ThirdPage.jsx";
 
 
-const API_BASE = "http://127.0.0.1:8000";
+import { API_BASE } from "./config";
 
 
 export async function getStatus() {
@@ -17,7 +17,7 @@ export async function getStatus() {
 }
 
 export async function getInternships(query = "") {
-  const url = query ? `${API_BASE}/internships?q=${query}` : `${API_BASE}/internships`;
+  const url = query ? `${API_BASE}/internships?q=${encodeURIComponent(query)}` : `${API_BASE}/internships`;
   const res = await fetch(url);
   return res.json();
 }

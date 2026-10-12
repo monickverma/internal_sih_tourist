@@ -1,0 +1,10 @@
+# Python deps for the Vercel serverless function (api/index.py).
+# scikit-learn must stay at 1.7.2: internship_model.pkl was pickled with it.
+fastapi==0.117.1
+pydantic==2.11.9
+starlette==0.48.0
+scikit-learn==1.7.2
+numpy==2.3.1
+pandas==2.3.2
+scipy==1.16.2
+joblib==1.5.2

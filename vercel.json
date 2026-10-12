@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "cd Final-Sih-Night && npm ci",
+  "buildCommand": "cd Final-Sih-Night && npm run build",
+  "outputDirectory": "Final-Sih-Night/dist",
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 30,
+      "includeFiles": "{internship-recommender/main.py,internship-recommender/api/**,internship-recommender/internship_model.pkl,data/Aicte_Internship_With_Feedback.csv}",
+      "excludeFiles": "{Final-Sih-Night/**,data/Job Datsset.csv,data/Aicte Intership Dataset.csv,.git/**}"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}

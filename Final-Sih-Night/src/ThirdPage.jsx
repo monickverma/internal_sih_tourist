@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./ThirdPage.css";
+import "./Thirdpage.css";
 
 const ThirdPage = () => {
   const location = useLocation();

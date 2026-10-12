@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Stepper from "./components/Stepper";
 import "./SecondPage.css";
+import { API_BASE } from "./config";
 
 const SecondPage = () => {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ const SecondPage = () => {
     try {
       setLoading(true);
 
-      const response = await fetch("http://127.0.0.1:8000/recommend?top_k=5", {
+      const response = await fetch(`${API_BASE}/recommend?top_k=5`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

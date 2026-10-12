@@ -16,3 +16,10 @@ Thumbs.db
 # IDE stuff
 .vscode/
 .idea/
+.vercel
+
+# Build output / logs / secrets
+Final-Sih-Night/dist/
+build.log
+.env
+.env.*
